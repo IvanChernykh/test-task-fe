@@ -1,5 +1,11 @@
+import { Box } from '@mui/material';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+
+import { Providers } from '@/components/providers';
+import { Sidebar } from '@/components/sidebar';
+import { Colors } from '@/utils/constants/colors';
+import '../global.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,7 +21,40 @@ interface IRootLayoutProps {
 const RootLayout: React.FC<IRootLayoutProps> = ({ children }) => {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={inter.className}
+        style={{
+          margin: 0,
+          color: Colors.TEXT_WHITE,
+          background: Colors.BG_BLACK,
+        }}
+      >
+        <Providers>
+          <Box
+            sx={{
+              display: 'flex',
+              width: '100%',
+              height: '100vh',
+              overflow: 'hidden',
+              gap: '8px',
+              padding: 1,
+            }}
+          >
+            <Sidebar />
+            <Box
+              sx={{
+                width: '100%',
+                overflow: 'auto',
+                padding: 2,
+                background: Colors.BG_BASE,
+                borderRadius: '8px',
+              }}
+            >
+              {children}
+            </Box>
+          </Box>
+        </Providers>
+      </body>
     </html>
   );
 };
