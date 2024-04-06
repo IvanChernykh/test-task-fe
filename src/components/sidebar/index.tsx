@@ -5,12 +5,12 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setUser } from '@/redux/reducers/user/userReducer';
-import { StoreType } from '@/redux/rootReducer';
+import { Store } from '@/redux/rootReducer';
 import { Colors } from '@/utils/constants/colors';
 import { Routes } from '@/utils/constants/routes';
 import { parseRoute } from '@/utils/helpers/parseRoute';
 
-import { LinkCustom } from '../ui/LinkCustom/linkCustom';
+import { LinkCustom } from '../ui/LinkCustom';
 
 interface ISidebarProps {}
 
@@ -28,7 +28,7 @@ const menuItems: MenuItem[] = [
 
 export const Sidebar: React.FC<ISidebarProps> = () => {
   const dispatch = useDispatch();
-  const currentUser = useSelector((state: StoreType) => state.user.currentUser);
+  const currentUser = useSelector((state: Store) => state.user.currentUser);
 
   const handleLogout = () => {
     dispatch(setUser({ user: null }));

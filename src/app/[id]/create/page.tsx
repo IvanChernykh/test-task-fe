@@ -1,7 +1,9 @@
 import React from 'react';
 
+import CreateRequest from '@/components/createRequest';
+
 const CreateParcelPage: React.FC = () => {
-  return <div>CreateParcelPage</div>;
+  return <CreateRequest />;
 };
 
 export default CreateParcelPage;

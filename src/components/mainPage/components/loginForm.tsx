@@ -1,20 +1,21 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
 import { Box, Button, Tab, Tabs, TextField, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { IUser } from '@/redux/reducers/user/types';
+
 import { authApi } from '@/api/auth/authApi';
+import { IUser } from '@/redux/reducers/user/types';
 import { setUser } from '@/redux/reducers/user/userReducer';
+import { Store } from '@/redux/rootReducer';
+
 import { ChangeAccaunt } from './changeAccaunt';
-import { StoreType } from '@/redux/rootReducer';
+
 interface ILoginFormProps {}
 
 export const LoginForm: React.FC<ILoginFormProps> = () => {
   const dispatch = useDispatch();
-  const { currentUser, allUsers } = useSelector(
-    (state: StoreType) => state.user,
-  );
+  const { currentUser } = useSelector((state: Store) => state.user);
 
   const [activeTab, setActiveTab] = useState<number>(0);
   const [inputVal, setInputVal] = useState<string>('');

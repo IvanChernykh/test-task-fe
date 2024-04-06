@@ -5,7 +5,9 @@ export enum Colors {
   BG_BLACK = '#000',
 
   TEXT_WHITE = '#fff',
+  TEXT_BLACK = '#000',
   TEXT_DISABLED = '#6a6a6a',
+  TEXT_ERROR = 'red',
 
   MAIN_BASE = '#1ed760',
 }

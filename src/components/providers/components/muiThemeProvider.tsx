@@ -58,6 +58,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          color: Colors.TEXT_BLACK,
+        },
+      },
+    },
   },
 });
 

@@ -40,7 +40,7 @@ export const ChangeAccaunt: React.FC<IChangeAccauntProps> = ({ users }) => {
         <Select label="Pick user" value={selectValue} onChange={handleChange}>
           {users.map(({ id, name }) => {
             return (
-              <MenuItem key={id} value={id} sx={{ color: Colors.BG_BLACK }}>
+              <MenuItem key={id} value={id}>
                 {name}
               </MenuItem>
             );

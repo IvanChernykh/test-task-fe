@@ -1,7 +1,7 @@
-import { Colors } from '@/utils/constants/colors';
 import Link, { LinkProps } from 'next/link';
 import React from 'react';
 
+import { Colors } from '@/utils/constants/colors';
 interface ILinkCustomProps extends LinkProps {
   children?: React.ReactNode;
   style?: React.CSSProperties;
