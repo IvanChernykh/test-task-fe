@@ -1,5 +1,7 @@
+import { MyRequests } from '@/components/myRequests';
+
 const MyRequestsPage: React.FC = () => {
-  return <div>my requests</div>;
+  return <MyRequests />;
 };
 
 export default MyRequestsPage;

@@ -1,15 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { IRequestsState } from './types';
+import { IRequest, IRequestsState } from './types';
 
-const initialState: IRequestsState = {};
+const initialState: IRequestsState = {
+  allRequests: [],
+};
 
 export const requestsSlice = createSlice({
   name: 'requests',
   initialState,
-  reducers: {},
+  reducers: {
+    setAllRequests: (state, { payload }: PayloadAction<IRequest[]>) => {
+      state.allRequests = payload;
+    },
+  },
 });
 
-export const {} = requestsSlice.actions;
+export const { setAllRequests } = requestsSlice.actions;
 
 export default requestsSlice.reducer;

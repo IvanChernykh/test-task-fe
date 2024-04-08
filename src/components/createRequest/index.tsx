@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import React from 'react';
 
 import { Routes } from '@/utils/constants/routes';
+import { getUserId } from '@/utils/helpers/getUserId';
 import { parseRoute } from '@/utils/helpers/parseRoute';
 
 import ContentContainer from '../ui/contentContainer';
@@ -12,7 +13,7 @@ import { LinkCustom } from '../ui/LinkCustom';
 const CreateRequest = () => {
   const pathname = usePathname();
 
-  const userId = pathname.split('/')[1];
+  const userId = getUserId(pathname);
 
   return (
     <ContentContainer>

@@ -23,8 +23,14 @@ import { Input } from '../ui/Input';
 
 interface IRequestFormProps {
   type: RequestType;
-  onSubmit: (data: Omit<IRequest, 'id' | 'createdByUser' | 'type'>) => void;
+  defaultValues?: RequestFormData;
+  onSubmit: (data: RequestFormData) => void;
 }
+
+export type RequestFormData = Omit<
+  IRequest,
+  'id' | 'createdByUser' | 'type' | 'createdAt'
+>;
 
 type Error = {
   message: string;
@@ -37,13 +43,20 @@ const getErrorMsg = (errs: Error[], field: string) => {
 
 export const RequestForm: React.FC<IRequestFormProps> = ({
   type,
+  defaultValues,
   onSubmit,
 }) => {
-  const [cityFrom, setCityFrom] = useState<string>('');
-  const [cityTo, setCityTo] = useState<string>('');
-  const [parcelType, setParcelType] = useState<ParcelTypes | ''>('');
-  const [dateTo, setDateTo] = useState<string>('');
-  const [desc, setDesc] = useState<string>('');
+  const [cityFrom, setCityFrom] = useState<string>(
+    defaultValues?.cityFrom || '',
+  );
+  const [cityTo, setCityTo] = useState<string>(defaultValues?.cityTo || '');
+  const [parcelType, setParcelType] = useState<ParcelTypes | ''>(
+    defaultValues?.typeofParcel || '',
+  );
+  const [dateTo, setDateTo] = useState<string>(
+    defaultValues?.dispatchDate || '',
+  );
+  const [desc, setDesc] = useState<string>(defaultValues?.description || '');
 
   const [errors, setErrors] = useState<Error[]>([]);
 

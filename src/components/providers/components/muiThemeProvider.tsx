@@ -65,6 +65,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          background: Colors.BG_TEXT_CONTRAST,
+        },
+      },
+    },
   },
 });
 

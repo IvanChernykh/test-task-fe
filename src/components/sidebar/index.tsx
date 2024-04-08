@@ -4,6 +4,7 @@ import { Box, Button, Typography, List, ListItemButton } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { authApi } from '@/api/auth/authApi';
 import { setUser } from '@/redux/reducers/user/userReducer';
 import { Store } from '@/redux/rootReducer';
 import { Colors } from '@/utils/constants/colors';
@@ -31,6 +32,7 @@ export const Sidebar: React.FC<ISidebarProps> = () => {
   const currentUser = useSelector((state: Store) => state.user.currentUser);
 
   const handleLogout = () => {
+    authApi.logOut();
     dispatch(setUser({ user: null }));
   };
 

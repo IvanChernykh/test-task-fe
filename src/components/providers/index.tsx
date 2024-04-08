@@ -2,6 +2,7 @@
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 
+import { AuthLayout } from './components/auth';
 import { MuiThemeProvider } from './components/muiThemeProvider';
 import { ReduxProvider } from './components/reduxProvider';
 
@@ -14,7 +15,7 @@ export const Providers: React.FC<IProvidersProps> = ({ children }) => {
     <ReduxProvider>
       <MuiThemeProvider>
         <LocalizationProvider dateAdapter={AdapterMoment}>
-          {children}
+          <AuthLayout>{children}</AuthLayout>
         </LocalizationProvider>
       </MuiThemeProvider>
     </ReduxProvider>
