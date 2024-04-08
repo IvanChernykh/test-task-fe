@@ -14,12 +14,17 @@ import { requestsApi } from '@/api/requests/requestsApi';
 import { setAllRequests } from '@/redux/reducers/requests/requestsReducer';
 import { IRequest } from '@/redux/reducers/requests/types';
 import { capitalize } from '@/utils/helpers/capitalizeWord';
+import moment from 'moment';
 
 interface IRequestItemProps {
   request: IRequest;
+  handleEdit: () => void;
 }
 
-export const RequestItem: React.FC<IRequestItemProps> = ({ request }) => {
+export const RequestItem: React.FC<IRequestItemProps> = ({
+  request,
+  handleEdit,
+}) => {
   const dispatch = useDispatch();
   const handleDelete = () => {
     const requests = requestsApi.deleteRequest(request.id);
@@ -45,6 +50,12 @@ export const RequestItem: React.FC<IRequestItemProps> = ({ request }) => {
       <AccordionDetails>
         <Box width="100%">
           <Typography variant="h6">Request details</Typography>
+          <p>
+            Created at:{' '}
+            {moment(parseInt(request.createdAt, 10)).format(
+              'MMM DD YYYY HH:MM',
+            )}
+          </p>
           <p>City of departure: {request.cityFrom}</p>
           <p>Destination city: {request.cityTo}</p>
           <p>Date of dispatch: {request.dispatchDate}</p>
@@ -63,7 +74,7 @@ export const RequestItem: React.FC<IRequestItemProps> = ({ request }) => {
             justifyContent: 'space-between',
           }}
         >
-          <Button>Edit</Button>
+          <Button onClick={handleEdit}>Edit</Button>
           <Button onClick={handleDelete}>Delete</Button>
         </Box>
       </AccordionDetails>

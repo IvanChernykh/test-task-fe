@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "true11.11.4",
     "@emotion/styled": "true11.11.5",
+    "@mui/icons-material": "true5.15.15",
     "@mui/material": "true5.15.15",
     "@mui/x-date-pickers": "true7.1.1",
     "@reduxjs/toolkit": "true2.2.3",

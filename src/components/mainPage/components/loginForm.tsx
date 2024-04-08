@@ -30,7 +30,6 @@ export const LoginForm: React.FC<ILoginFormProps> = () => {
   };
 
   const handleLogin = () => {
-    console.log(123);
     const newCurrentUser = authApi.loginAsNewOrExistingUser(inputVal);
     dispatch(setUser({ user: newCurrentUser! }));
     setInputVal('');

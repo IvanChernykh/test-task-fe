@@ -8,6 +8,7 @@ import {
   Select,
   TextField,
   TextareaAutosize,
+  Typography,
 } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 import moment from 'moment';
@@ -19,6 +20,7 @@ import {
   RequestType,
 } from '@/redux/reducers/requests/types';
 
+import { HelperText } from '../ui/HelperText';
 import { Input } from '../ui/Input';
 
 interface IRequestFormProps {
@@ -99,64 +101,74 @@ export const RequestForm: React.FC<IRequestFormProps> = ({
         gap: 3,
       }}
     >
-      <Input
-        fullWidth
-        name="cityFrom"
-        placeholder="City of departure (required)"
-        value={cityFrom}
-        errorMessage={getErrorMsg(errors, 'cityFrom')}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          changeInput(e, 'cityFrom', setCityFrom);
-        }}
-      />
-      <Input
-        fullWidth
-        name="cityTo"
-        placeholder="Destination city (required)"
-        value={cityTo}
-        errorMessage={getErrorMsg(errors, 'cityTo')}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          changeInput(e, 'cityTo', setCityTo);
-        }}
-      />
-      {type === 'order' && (
-        <FormControl fullWidth>
-          <InputLabel>Type of parcel</InputLabel>
-          <Select
-            label="Type of parcel"
-            value={parcelType}
-            onChange={(e) => setParcelType(e.target.value as ParcelTypes)}
-          >
-            {Object.values(ParcelTypes).map((item) => {
-              return (
-                <MenuItem key={item} value={item}>
-                  {item}
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
-      )}
-      <DatePicker
-        value={dateTo ? moment(dateTo) : undefined}
-        onChange={(e) => setDateTo(moment(e).format('MMM DD YYYY'))}
-      />
-      {type === 'order' && (
-        <TextareaAutosize
-          placeholder="Parcel description"
-          minRows={5}
-          maxRows={10}
-          style={{ resize: 'none', outline: 'none', padding: '5px' }}
-          value={desc}
-          onChange={(e) => setDesc(e.target.value)}
+      <Box>
+        <HelperText>City of departure</HelperText>
+        <Input
+          fullWidth
+          name="cityFrom"
+          placeholder="City of departure (required)"
+          value={cityFrom}
+          errorMessage={getErrorMsg(errors, 'cityFrom')}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            changeInput(e, 'cityFrom', setCityFrom);
+          }}
         />
+      </Box>
+      <Box>
+        <HelperText>Destination city</HelperText>
+        <Input
+          fullWidth
+          name="cityTo"
+          placeholder="Destination city (required)"
+          value={cityTo}
+          errorMessage={getErrorMsg(errors, 'cityTo')}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            changeInput(e, 'cityTo', setCityTo);
+          }}
+        />
+      </Box>
+      <Box>
+        <HelperText>Dispatch date</HelperText>
+        <DatePicker
+          sx={{ width: '100%' }}
+          value={dateTo ? moment(dateTo) : undefined}
+          onChange={(e) => setDateTo(moment(e).format('MMM DD YYYY'))}
+        />
+      </Box>
+      {type === 'order' && (
+        <>
+          <FormControl fullWidth>
+            <InputLabel>Type of parcel</InputLabel>
+            <Select
+              label="Type of parcel"
+              value={parcelType}
+              onChange={(e) => setParcelType(e.target.value as ParcelTypes)}
+            >
+              {Object.values(ParcelTypes).map((item) => {
+                return (
+                  <MenuItem key={item} value={item}>
+                    {item}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
+          <TextareaAutosize
+            placeholder="Parcel description"
+            minRows={5}
+            maxRows={10}
+            style={{ resize: 'none', outline: 'none', padding: '5px' }}
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
+          />
+        </>
       )}
       <Button
         sx={{ mt: 1 }}
         disabled={!cityFrom.length || !cityTo.length}
         onClick={handleSubmit}
       >
-        Create request
+        {defaultValues ? 'Update' : 'Create'} request
       </Button>
     </Box>
   );

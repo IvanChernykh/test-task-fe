@@ -5,3 +5,16 @@
 .MuiDateCalendar-root * {
   color: black;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #555;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #595959;
+}
