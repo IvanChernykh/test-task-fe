@@ -1,5 +1,5 @@
 import CloseIcon from '@mui/icons-material/Close';
-import { Box, IconButton, Modal } from '@mui/material';
+import { Box, IconButton, Modal, SxProps } from '@mui/material';
 import React from 'react';
 
 import { Colors } from '@/utils/constants/colors';
@@ -9,12 +9,14 @@ interface IModalCustomProps {
   handleClose: () => void;
   children: React.ReactNode;
   header?: React.ReactNode;
+  style?: SxProps;
 }
 
 export const ModalCustom: React.FC<IModalCustomProps> = ({
   open,
   children,
   header,
+  style,
   handleClose,
 }) => {
   return (
@@ -31,6 +33,7 @@ export const ModalCustom: React.FC<IModalCustomProps> = ({
           border: `2px solid ${Colors.BG_TEXT_CONTRAST}`,
           maxHeight: 500,
           overflow: 'auto',
+          ...style,
         }}
       >
         <Box

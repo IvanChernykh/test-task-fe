@@ -1,3 +1,5 @@
+import { IUser } from '../user/types';
+
 export interface IRequestsState {
   allRequests: IRequest[];
 }
@@ -15,7 +17,7 @@ export enum ParcelTypes {
 export interface IRequest {
   id: string;
   createdAt: string;
-  createdByUser: string; // user id
+  createdByUser: IUser; // user id
   type: RequestType;
   description?: string;
   dispatchDate: string;

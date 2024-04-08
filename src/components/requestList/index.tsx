@@ -24,9 +24,7 @@ const sortItems = (arr: IRequest[], sortMode: SortMode) => {
   return _.orderBy(
     arr,
     (item) =>
-      sortMode === 'creationDate'
-        ? +item.createdAt
-        : +moment(item.dispatchDate).format('X'),
+      sortMode === 'creationDate' ? +item.createdAt : +item.dispatchDate,
     'desc',
   );
 };

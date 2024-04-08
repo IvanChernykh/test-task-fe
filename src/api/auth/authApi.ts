@@ -51,6 +51,12 @@ class AuthApi {
 
     return users.find((item) => item.id === authKey) || null;
   }
+
+  findUser(userId: string) {
+    const users = this.getAllUsers();
+
+    return users.find((item) => item.id === userId);
+  }
 }
 
 export const authApi = new AuthApi();

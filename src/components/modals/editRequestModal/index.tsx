@@ -43,11 +43,7 @@ export const EditRequestModal: React.FC<IEditRequestModalProps> = ({
     <ModalCustom
       open={open}
       handleClose={handleClose}
-      header={
-        <Typography id="modal-modal-title" variant="h6">
-          Edit Request
-        </Typography>
-      }
+      header={<Typography variant="h6">Edit Request</Typography>}
     >
       <RequestForm
         type={request!.type}
