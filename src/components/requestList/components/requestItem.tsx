@@ -7,6 +7,7 @@ import {
   Box,
   Button,
 } from '@mui/material';
+import moment from 'moment';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -14,7 +15,6 @@ import { requestsApi } from '@/api/requests/requestsApi';
 import { setAllRequests } from '@/redux/reducers/requests/requestsReducer';
 import { IRequest } from '@/redux/reducers/requests/types';
 import { capitalize } from '@/utils/helpers/capitalizeWord';
-import moment from 'moment';
 
 interface IRequestItemProps {
   request: IRequest;
@@ -53,7 +53,7 @@ export const RequestItem: React.FC<IRequestItemProps> = ({
           <p>
             Created at:{' '}
             {moment(parseInt(request.createdAt, 10)).format(
-              'MMM DD YYYY HH:MM',
+              'MMM DD YYYY HH:mm',
             )}
           </p>
           <p>City of departure: {request.cityFrom}</p>
